@@ -2,7 +2,7 @@
  * @Author: shiqi liziw2012@gmail.com
  * @Date: 2024-03-27 10:22:02
  * @LastEditors: shiqi liziw2012@gmail.com
- * @LastEditTime: 2024-03-27 15:47:52
+ * @LastEditTime: 2024-03-27 16:28:31
  * @FilePath: /next-app/src/components/auth/SigninForm.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -11,6 +11,7 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
+import Image from "next/image";
 
 type Inputs = {
   email: string;
@@ -43,7 +44,7 @@ function SigninForm() {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
+          <Image
             className="mx-auto h-10 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
