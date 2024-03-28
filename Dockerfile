@@ -15,10 +15,11 @@ RUN npm config set strict-ssl false
 RUN npm i pnpm -g --registry=https://registry.npm.taobao.org
 RUN pnpm i
 RUN pnpm build
-
+RUN npm i pm2 -g --registry=https://registry.npm.taobao.org
 
 # 设置环境变量
 ENV NODE_ENV=production
 
 # 运行应用程序
-CMD ["pnpm", "start"]
+# CMD ["pnpm", "start"]
+CMD ["pm2-runtime", "npm", "--", "start"]
