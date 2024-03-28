@@ -14,8 +14,6 @@ RUN npm cache clean --force
 RUN npm config set strict-ssl false
 RUN npm i pnpm -g --registry=https://registry.npm.taobao.org
 RUN pnpm i
-RUN pnpx prisma generate
-RUN pnpx prisma migrate deploy
 RUN pnpm build
 
 
