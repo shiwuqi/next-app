@@ -8,11 +8,16 @@ COPY . .
 
 EXPOSE 3008
 
+ENV DATABASE_URL=postgresql://postgres:tianhone888!@shiqi-liwandou.top:5432/chatgpt
+
 RUN npm cache clean --force
 RUN npm config set strict-ssl false
 RUN npm i pnpm -g --registry=https://registry.npm.taobao.org
 RUN pnpm i
+RUN pnpx prisma generate
+RUN pnpx prisma migrate deploy
 RUN pnpm build
+
 
 # 设置环境变量
 ENV NODE_ENV=production

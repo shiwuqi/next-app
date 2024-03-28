@@ -3,7 +3,6 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Image from "next/image";
 
 type Inputs = {
   email: string;
@@ -24,11 +23,13 @@ function SignupForm() {
     if (data.password !== data.confirmPassword) {
       return alert("The two passwords are different.");
     }
-    const res = await axios.post("/api/auth/register", data);
+    console.log('submit', data);
+    const { confirmPassword, ...rest } = data;
+    const res = await axios.post("/api/auth/register", rest);
 
     if (res.status === 200) {
       const result = await signIn("credentials", {
-        email: res.data.email,
+        email: data.email,
         password: data.password,
         redirect: false,
       });
@@ -44,11 +45,6 @@ function SignupForm() {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <Image
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign up
           </h2>
