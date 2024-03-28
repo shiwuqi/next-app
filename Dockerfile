@@ -8,7 +8,7 @@ COPY . .
 
 EXPOSE 3008
 
-ENV DATABASE_URL=postgresql://postgres:tianhone888!@shiqi-liwandou.top:5432/chatgpt
+ENV DATABASE_URL=postgresql://postgres:password@localhost:5432/chatgpt
 
 RUN npm cache clean --force
 RUN npm config set strict-ssl false
