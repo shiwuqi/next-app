@@ -2,14 +2,15 @@
  * @Author: shiqi liziw2012@gmail.com
  * @Date: 2024-03-27 16:24:19
  * @LastEditors: shiqi liziw2012@gmail.com
- * @LastEditTime: 2024-03-29 11:51:19
+ * @LastEditTime: 2024-03-29 14:09:29
  * @FilePath: /next-app/src/lib/auth.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import prisma from "@/lib/prisma";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GithubProvider from "next-auth/providers/github"
+import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -45,6 +46,10 @@ export const authOptions: AuthOptions = {
     GithubProvider({
       clientId: process.env.GITHUB_ID ?? "",
       clientSecret: process.env.GITHUB_SECRET ?? "",
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_Id ?? "",
+      clientSecret: process.env.GOOGLE_SECRET ?? ""
     })
   ],
   pages: {
