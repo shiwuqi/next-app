@@ -23,9 +23,12 @@ function SignupForm() {
     if (data.password !== data.confirmPassword) {
       return alert("The two passwords are different.");
     }
-    console.log('submit', data);
+    console.log("submit", data);
     const { confirmPassword, ...rest } = data;
-    const res = await axios.post("/api/auth/register", rest);
+    const res = await axios.post("/api/auth/register", {
+      ...rest,
+      loginType: 'credentials'
+    });
 
     if (res.status === 200) {
       const result = await signIn("credentials", {
@@ -53,7 +56,10 @@ function SignupForm() {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
                 Email address
               </label>
               <div className="mt-2">
@@ -73,10 +79,15 @@ function SignupForm() {
               </div>
             </div>
             {errors.email && (
-              <span className="text-error text-xs mt-2">{errors.email.message}</span>
+              <span className="text-error text-xs mt-2">
+                {errors.email.message}
+              </span>
             )}
             <div>
-              <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
                 Username
               </label>
               <div className="mt-2">
@@ -90,7 +101,7 @@ function SignupForm() {
                     required: {
                       value: true,
                       message: "Username is required",
-                    }
+                    },
                   })}
                 />
               </div>
@@ -102,7 +113,10 @@ function SignupForm() {
             )}
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Password
                 </label>
               </div>
@@ -129,7 +143,10 @@ function SignupForm() {
             )}
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
                   Confirm Password
                 </label>
               </div>
