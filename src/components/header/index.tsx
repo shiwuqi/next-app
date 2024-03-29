@@ -2,7 +2,7 @@
  * @Author: shiqi liziw2012@gmail.com
  * @Date: 2024-03-27 10:22:02
  * @LastEditors: shiqi liziw2012@gmail.com
- * @LastEditTime: 2024-03-28 14:52:02
+ * @LastEditTime: 2024-03-29 17:04:59
  * @FilePath: /next-app/src/components/header.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -20,7 +20,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
-            <Image width={64} height={48} src="/next.svg" alt="" />
+            <Image width={40} height={20} src="/logo.png" alt="" />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -53,7 +53,7 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <Image width={64} height={48} src="/next.svg" alt="" />
+              <Image width={40} height={20} src="/logo.png" alt="" />
             </a>
             <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700">
               <span className="sr-only">Close menu</span>
