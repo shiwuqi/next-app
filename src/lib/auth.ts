@@ -2,13 +2,14 @@
  * @Author: shiqi liziw2012@gmail.com
  * @Date: 2024-03-27 16:24:19
  * @LastEditors: shiqi liziw2012@gmail.com
- * @LastEditTime: 2024-03-27 17:50:44
+ * @LastEditTime: 2024-03-29 11:51:19
  * @FilePath: /next-app/src/lib/auth.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import prisma from "@/lib/prisma";
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GithubProvider from "next-auth/providers/github"
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -41,12 +42,23 @@ export const authOptions: AuthOptions = {
         };
       },
     }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
+    })
   ],
   pages: {
     signIn: "/auth/login",
   },
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
+    async signIn({ user, account }) {
+      if (account?.provider === 'github' || account?.provider === 'google') {
+        await prisma.user.upsert({
+          where: { email: user?.email ?? "" },
+          update: { username: user?.name ?? "" },
+          create: { username: user?.name ?? "", email: user?.email ?? "", loginType: account?.provider },
+        });
+      }
       return true;
     },
     async redirect({ url, baseUrl }) {
