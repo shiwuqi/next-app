@@ -2,7 +2,7 @@
  * @Author: shiqi liziw2012@gmail.com
  * @Date: 2024-03-27 10:22:02
  * @LastEditors: shiqi liziw2012@gmail.com
- * @LastEditTime: 2024-03-29 11:03:18
+ * @LastEditTime: 2024-03-29 14:11:59
  * @FilePath: /next-app/src/components/auth/SigninForm.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -118,7 +118,7 @@ function SigninForm() {
           </form>
         </div>
         <div className="flex justify-between mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
-          <button className="flex items-center border py-1.5 px-10 rounded">
+          <button className="flex items-center border py-1.5 px-10 rounded" onClick={() => signIn('google')}>
             <svg className="h-5 w-5" viewBox="0 0 24 24">
               <path
                 d="M12.0003 4.75C13.7703 4.75 15.3553 5.36002 16.6053 6.54998L20.0303 3.125C17.9502 1.19 15.2353 0 12.0003 0C7.31028 0 3.25527 2.69 1.28027 6.60998L5.27028 9.70498C6.21525 6.86002 8.87028 4.75 12.0003 4.75Z"
