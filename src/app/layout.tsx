@@ -26,11 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="business">
       <body className={inter.className}>
-        <div className="container mx-auto">
-          <GlobalContext>
-            {children}
-          </GlobalContext>
-        </div>
+        <GlobalContext>
+          {children}
+        </GlobalContext>
       </body>
     </html>
   );
